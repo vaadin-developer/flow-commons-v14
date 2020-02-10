@@ -19,8 +19,8 @@ version: '3.5'
 services:
   deploy:
     image: svenruppert/deploy:1.8.0-222
-    container_name: deploy_component-project-template-for-flow
-    hostname: deploy_component-project-template-for-flow
+    container_name: deploy_rapidpm-vaadin-flow-commons-v14
+    hostname: deploy_rapidpm-vaadin-flow-commons-v14
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - $PWD/:/usr/src/mymaven

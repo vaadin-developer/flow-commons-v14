@@ -15,5 +15,5 @@
 # limitations under the License.
 #
 
-docker rm deploy_component-project-template-for-flow
+docker rm deploy_rapidpm-vaadin-flow-commons-v14
 docker-compose up

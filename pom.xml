@@ -23,31 +23,31 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.rapidpm</groupId>
+    <groupId>org.rapidpm.vaadin</groupId>
     <artifactId>rapidpm-vaadin-dependencies-v14</artifactId>
-    <version>04.06.01-RPM-SNAPSHOT</version>
+    <version>05.00.00-alpha-b3</version>
   </parent>
 
   <groupId>org.rapidpm.vaadin</groupId>
-  <artifactId>component-project-template-for-flow-parent</artifactId>
-  <version>00.00.01-RPM-SNAPSHOT</version>
+  <artifactId>rapidpm-vaadin-flow-commons-v14</artifactId>
+  <version>05.00.00-alpha</version>
 
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
 
   <inceptionYear>2018</inceptionYear>
   <organization>
     <name>Sven Ruppert</name>
     <url>https://github.com/svenruppert</url>
   </organization>
-  <url>https://github.com/vaadin-developer/component-project-template</url>
+  <url>https://github.com/vaadin-developer/flow-commons-v14</url>
 
   <scm>
-    <url>https://github.com/vaadin-developer/component-project-template</url>
+    <url>https://github.com/vaadin-developer/flow-commons-v14</url>
     <connection>
-      scm:git:https://github.com/vaadin-developer/component-project-template.git
+      scm:git:https://github.com/vaadin-developer/flow-commons-v14.git
     </connection>
     <developerConnection>
-      scm:git:https://github.com/vaadin-developer/component-project-template.git
+      scm:git:https://github.com/vaadin-developer/flow-commons-v14.git
     </developerConnection>
     <tag>HEAD</tag>
   </scm>
@@ -64,7 +64,7 @@
   <issueManagement>
     <system>Github</system>
     <url>
-      https://github.com/vaadin-developer/component-project-template/issues
+      https://github.com/vaadin-developer/flow-commons-v14/issues
     </url>
   </issueManagement>
   <licenses>
@@ -76,12 +76,6 @@
     </license>
   </licenses>
 
-  <modules>
-    <module>01_impl</module>
-    <module>02_test</module>
-    <module>03_demo</module>
-  </modules>
-
   <properties>
     <!--technical-->
     <jdk.version>1.8</jdk.version>
@@ -89,42 +83,55 @@
 
   <repositories>
     <repository>
-      <id>sven-ruppert</id>
-      <name>Dev Repo with SNAPSHOTS</name>
-      <layout>default</layout>
-      <url>http://repo.sven-ruppert.de/repository/maven-public/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>central</id>
+      <name>libs-release</name>
+      <!--      <url>${deploy-repo-url}</url>-->
+      <url>http://jfrog-repo.sven-ruppert.de:8081/artifactory/libs-release</url>
+    </repository>
+    <repository>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+      <id>snapshots</id>
+      <name>libs-snapshot</name>
+      <url>http://jfrog-repo.sven-ruppert.de:8081/artifactory/libs-snapshot</url>
     </repository>
   </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>central</id>
+      <name>libs-release</name>
+      <url>http://jfrog-repo.sven-ruppert.de:8081/artifactory/libs-release</url>
+      <!--      <url>${deploy-repo-url}</url>-->
+    </pluginRepository>
+    <pluginRepository>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+      <id>snapshots</id>
+      <name>libs-snapshot</name>
+      <url>http://jfrog-repo.sven-ruppert.de:8081/artifactory/libs-snapshot</url>
+    </pluginRepository>
+  </pluginRepositories>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.rapidpm.vaadin</groupId>
-        <artifactId>component-project-template-for-flow</artifactId>
-        <version>00.00.01-RPM-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>org.rapidpm.vaadin</groupId>
-        <artifactId>nano-vaadin-undertow</artifactId>
-        <version>01.00.05-RPM-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>com.github.appreciated</groupId>
-        <artifactId>vaadin-css-grid</artifactId>
-        <version>2.0.0.beta3</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-
-  <dependencies>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-simple</artifactId>
-    </dependency>
-  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <configuration>
+          <rulesUri>file://${maven.multiModuleProjectDirectory}/version-number-rules.xml</rulesUri>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
