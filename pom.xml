@@ -30,7 +30,7 @@
 
   <groupId>org.rapidpm.vaadin</groupId>
   <artifactId>rapidpm-vaadin-flow-commons-v14</artifactId>
-  <version>05.00.01</version>
+  <version>05.00.01-64</version>
 
   <packaging>jar</packaging>
 
